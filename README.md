@@ -11,7 +11,8 @@ This project demonstrates how blockchain technology can replace intermediaries w
 
 Funds are locked in an escrow smart contract and can only be released according to predefined rules — either by client approval or automatically when deadlines are reached.
 
-🏗️** System Architecture**
+**🏗️ System Architecture**
+
 Client ──┐
          │  (ETH Deposit)
          ▼
@@ -36,7 +37,8 @@ Swap Interface: Enables ETH → stable token conversion
 
 Reputation Module: Tracks participant behavior post-transaction
 
-🔁** Escrow Workflow**
+**🔁 Escrow Workflow**
+
 1. Escrow Created (Client deposits ETH)
 2. Funds locked inside smart contract
 3. Settlement Path:
@@ -48,7 +50,7 @@ Reputation Module: Tracks participant behavior post-transaction
 
 This ensures trust-minimized, predictable outcomes with no centralized control.
 
-🧪** Testing & Reliability**
+**🧪 Testing & Reliability**
 
 Comprehensive unit tests written using Mocha + Chai
 
@@ -62,19 +64,16 @@ Token swap execution
 
 All tests pass on a local Hardhat network
 
-🛠️ **Tech Stack
-**
-Solidity (0.8.x)
+**🛠️ Tech Stack**
 
-Hardhat
+   Solidity (0.8.x)
+   Hardhat
+   Ethers.js
+   Mocha / Chai
+   Node.js
 
-Ethers.js
+**📦 Installation & Usage**
 
-Mocha / Chai
-
-Node.js
-
-📦 Installation & Usage
 npm install
 npx hardhat compile
 npx hardhat test
@@ -89,6 +88,6 @@ Clean separation of concerns for extensibility
 
 Fully tested and production-aligned structure
 
-**👨‍💻 Author | Pranith R **
+**👨‍💻 Author | Pranith R**
 
 Built as a hands-on blockchain engineering project to showcase secure smart contract design, testing discipline, and real-world decentralized application architecture.
