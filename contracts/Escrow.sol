@@ -74,10 +74,10 @@ contract Escrow is AutomationCompatibleInterface {
     function release(uint256 score) external onlyClient nonReentrant {
         require(!released, "Already released");
 
-        released = true;
+       released = true;
+       reputation.updateReputation(freelancer, score);
        (bool success, ) = freelancer.call{value: amount}("");
-       require(success, "ETH transfer failed");
-        reputation.updateReputation(freelancer, score);
+       require(success);
     }
 
     /* Chainlink Automation */
@@ -105,6 +105,7 @@ contract Escrow is AutomationCompatibleInterface {
     address[] memory path = new address[](2);
     path[0] = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE; // Confirm for your chain
     path[1] = stableToken;
+    require(!released, "Already released");
     uniswap.swapExactETHForTokens{value: amount}(
         minOut,
         path,
