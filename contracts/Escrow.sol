@@ -75,7 +75,8 @@ contract Escrow is AutomationCompatibleInterface {
         require(!released, "Already released");
 
         released = true;
-        payable(freelancer).transfer(amount);
+       (bool success, ) = freelancer.call{value: amount}("");
+       require(success, "ETH transfer failed");
         reputation.updateReputation(freelancer, score);
     }
 
@@ -95,7 +96,8 @@ contract Escrow is AutomationCompatibleInterface {
         require(block.timestamp >= deadline, "Too early");
 
         released = true;
-        payable(freelancer).transfer(amount);
+        (bool success, ) = freelancer.call{value: amount}("");
+        require(success, "ETH transfer failed");
     }
 
     /* Uniswap Swap */
